@@ -1,6 +1,7 @@
 # vue-jwt-demo
 
-> A Vue.js project
+> 一个最简单的vue.js项目，实现了前后端分离的基本功能
+> 对应的java后台：https://github.com/jimolonely/AuthServer
 
 ## Build Setup
 
