@@ -1,19 +1,9 @@
-# vue-jwt-demo
 
-> 一个最简单的vue.js项目，实现了前后端分离的基本功能
-> 对应的java后台：https://github.com/jimolonely/AuthServer
+# 说明
 
-## Build Setup
+本项目有2个关于前后端分离的前端实现
 
-``` bash
-# install dependencies
-npm install
+1. vue-jwt-demo: 使用vue js构建
+2. jwt-pure-js: 使用传统js构建
 
-# serve with hot reload at localhost:8080
-npm run dev
 
-# build for production with minification
-npm run build
-```
-
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
