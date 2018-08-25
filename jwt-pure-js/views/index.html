@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Vue.js learn</title>
+</head>
+
+<body>
+    <div id="app">
+        {{message}}
+    </div>
+
+    <div id="app2">
+        <span v-bind:title="message">move on</span>
+    </div>
+
+    <div id="app3">
+        <p v-if="seen">你看见我了</p>
+    </div>
+    <div id="app4">
+        <ol>
+            <li v-for="todo in todos">{{todo.text}}</li>
+        </ol>
+    </div>
+    <div id="app5">
+        <p>{{message}}</p>
+        <button v-on:click="reverse">click</button>
+    </div>
+    <div id="app6">
+        <p>{{msg}}</p>
+        <input v-model="msg" />
+    </div>
+    <div id="app7">
+        <ol>
+            <todo-item v-for="todo in todos" v-bind:todo="todo" v-bind:key="todo.id">
+            </todo-item>
+        </ol>
+    </div>
+
+    <script src="../js/lib/vue.js"></script>
+
+    <script type="text/javascript">
+        Vue.component('todo-item', {
+            props: ['todo'],
+            template: '<li>{{todo.text}}</li>'
+        })
+
+        var app7 = new Vue({
+            el: '#app7',
+            data: {
+                todos: [
+                    { id: 1, text: "asdasd" },
+                    { id: 2, text: "asdasd" },
+                    { id: 3, text: "asdasd" },
+                ]
+            }
+        })
+
+        var app6 = new Vue({
+            el: '#app6',
+            data: {
+                msg: "heloo asdas"
+            }
+        })
+        var app5 = new Vue({
+            el: '#app5',
+            data: {
+                message: "hello jimo"
+            },
+            methods: {
+                reverse: function () {
+                    this.message = this.message.split("").reverse().join("")
+                }
+            }
+        })
+        var app4 = new Vue({
+            el: '#app4',
+            data: {
+                todos: [
+                    { text: "jsdks" },
+                    { text: "jsasdasd" },
+                    { text: "123334" }
+                ]
+            }
+        })
+        var app3 = new Vue({
+            el: '#app3',
+            data: {
+                seen: true
+            }
+        })
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: "hello"
+            }
+        })
+
+        var app2 = new Vue({
+            el: "#app2",
+            data: {
+                message: 'time is:' + new Date().toLocaleTimeString()
+            }
+        })
+    </script>
+</body>
+
+</html>
