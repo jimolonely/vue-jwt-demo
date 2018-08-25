@@ -19,10 +19,9 @@
 
     <script src="../js/lib/vue.js"></script>
     <script src="../js/lib/jquery-1.12.4.js"></script>
-    <script src="../js/util/network.js"></script>
+    <script src="../js/util/util.js"></script>
 
     <script type="text/javascript">
-
         var login = new Vue({
             el: '#login',
             data: {
@@ -35,12 +34,14 @@
                     if (this.name === "" || this.pass === "") {
                         this.error = "not blank";
                     } else {
-                        post("/user/login", {
-                            username: name,
-                            password: pass
+                        console.log(this.name)
+                        net.postJson("/user/login", {
+                            username: this.name,
+                            password: this.pass
                         }, function (re) {
                             console.log(re)
-                            window.location.href = "./index.html";
+                            storage.tokenStore(re.data);
+                            // window.location.href = "./index.html";
                         });
                     }
                 }

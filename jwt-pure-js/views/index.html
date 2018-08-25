@@ -7,6 +7,8 @@
 </head>
 
 <body>
+
+
     <div id="app">
         {{message}}
     </div>
@@ -39,8 +41,13 @@
     </div>
 
     <script src="../js/lib/vue.js"></script>
+    <script src="../js/lib/jquery-1.12.4.js"></script>
+    <script src="../js/util/util.js"></script>
 
     <script type="text/javascript">
+
+        
+
         Vue.component('todo-item', {
             props: ['todo'],
             template: '<li>{{todo.text}}</li>'
