@@ -8,7 +8,10 @@
 
 <body>
 
-
+    <div id="test">
+        {{email}}
+        <button @click="click()">click me</button>
+    </div>
     <div id="app">
         {{message}}
     </div>
@@ -46,7 +49,39 @@
 
     <script type="text/javascript">
 
-        
+        var test = new Vue({
+            el: '#test',
+            data: {
+                email: ''
+            },
+            methods: {
+                click: function () {
+                    let self = this;
+                    $.ajax({
+                        url: "http://localhost:8081/user/getEmail",
+                        type: 'GET',
+                        // dataType: 'JSON',
+                        // beforeSend: function (xhr) {
+                        //     xhr.setRequestHeader("Authorization", 'Bearer ' + token);
+                        // },
+                        contentType: "application/json;charset=UTF-8",
+                        headers: {
+                            "Authorization": "Bearer " + storage.tokenGet()
+                        },
+                        success: function (re) {
+                            if (re.ok) {
+                                self.email = re.data;
+                            } else {
+                                alert(re.msg);
+                            }
+                        },
+                        error: function (e) {
+                            console.log(e)
+                        }
+                    })
+                }
+            }
+        })
 
         Vue.component('todo-item', {
             props: ['todo'],

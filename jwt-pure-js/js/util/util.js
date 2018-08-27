@@ -3,7 +3,7 @@
  * 网络请求封装模块
  */
 var net = {
-    HOST: "http://localhost:8080",
+    HOST: "http://localhost:8081",
     /**
      * JSON请求，后台使用RequestBody接收数据
      */

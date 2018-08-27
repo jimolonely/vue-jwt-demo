@@ -21,27 +21,31 @@
 </template>
 
 <script>
-import auth from '../auth/auth'
+import net from "../util/net";
 
 export default {
-
   data() {
     return {
       info: {
-        username: '',
-        password: ''
+        username: "",
+        password: ""
       },
-      error: ''
-    }
+      error: ""
+    };
   },
   methods: {
     submit() {
       var info = {
         username: this.info.username,
         password: this.info.password
-      }
-      auth.login(this, info)
+      };
+
+      let context = this;
+      net.postJson("user/login", info, function(token) {
+        localStorage.setItem("token", token);
+        context.$router.push("home");
+      });
     }
   }
-}
+};
 </script>
