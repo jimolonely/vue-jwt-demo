@@ -8,11 +8,11 @@ export default {
     data: {
         authenticated: false
     },
-    login(context, info) {
-        net.postJson('/user/login', info, function (token) {
-            localStorage.setItem('token', token);
-            this.$router.push('home');
-        })
+    // login(context, info) {
+    //     net.postJson('/user/login', info, function (token) {
+    //         localStorage.setItem('token', token);
+    //         this.$router.push('home');
+    //     })
         // context.$http.post(LOGIN_URL, info).then(function (data) {
         //     console.log(data)
         //     var re = data.body;
@@ -28,7 +28,7 @@ export default {
         //     console.log(err + "," + err.body.message)
         //     context.error = err.body.message
         // })
-    },
+    // },
     getAuthHeader() {
         return {
             'Authorization': 'Bearer ' + localStorage.getItem('token')

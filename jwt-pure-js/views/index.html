@@ -65,7 +65,7 @@
                         //     xhr.setRequestHeader("Authorization", 'Bearer ' + token);
                         // },
                         contentType: "application/json;charset=UTF-8",
-                        headers: {
+                        data: {
                             "Authorization": "Bearer " + storage.tokenGet()
                         },
                         success: function (re) {

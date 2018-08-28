@@ -3,6 +3,9 @@
     <h1>{{msg}}</h1>
     <button @click="getEmail()">Get Email</button>
     <h2>Email:{{email}}</h2>
+    <p></p>
+    <button @click="checkToken()">Check Token</button>
+    <h2>Token:{{token}}</h2>
   </div>
 </template>
 
@@ -15,7 +18,8 @@ export default {
   data() {
     return {
       msg: "欢迎您登录成功",
-      email: ""
+      email: "",
+      token: ""
     };
   },
   beforeCreate() {
@@ -26,14 +30,40 @@ export default {
   },
   methods: {
     getEmail() {
-      // this.$http.get('http://localhost:8081/user/getEmail',{
-      //     headers:auth.getAuthHeader()
-      // }).then(function(re){
-      //     this.email = re.bodyText
-      // },function(){
-      //     console.log("get email error")
-      // })
-      net.get("user/getEmail", function() {});
+      // this.$http
+      //   .get("http://localhost:8081/user/getEmail", {
+      //     headers: auth.getAuthHeader()
+      //   })
+      //   .then(
+      //     function(re) {
+      //       this.email = re.bodyText;
+      //     },
+      //     function(e) {
+      //       console.log(e);
+      //       console.log("get email error");
+      //     }
+      //   );
+      let self = this;
+      net.get(
+        "user/getEmail",
+        function(data) {
+          self.email = data;
+        },
+        this
+      );
+    },
+    checkToken() {
+      let self = this;
+      net.post(
+        "user/checkToken",
+        {
+          token: localStorage.getItem("token")
+        },
+        function(data) {
+          self.token = data;
+        },
+        this
+      );
     }
   }
 };
